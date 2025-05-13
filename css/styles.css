@@ -1,38 +1,38 @@
 html, body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina relleno por defecto */
+    height: 100%; /* Ocupa el 100% de alto de la ventana */
+    display: flex; /* Usa flexbox para estructura vertical */
+    flex-direction: column; /* Apila elementos de arriba hacia abajo */
 }
 
 header, footer {
     background: #003366;
     color: white;
-    padding: 1em;
-    text-align: center;
+    padding: 1em; /* Espaciado interno */
+    text-align: center; /* Alinea el texto en el centro */
 }
 
 footer {
-    margin-top: auto;
+    margin-top: auto; /* Empuja el footer al fondo cuando se usa flex en body */
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    list-style: none; /* Quita los puntos de lista */
+    padding: 0; 
+    display: flex; 
+    justify-content: center; /* Centra los ítems horizontalmente */
+    flex-wrap: wrap; /* Permite que los ítems salten de línea si no caben */
     background: #005599;
 }
 
 nav ul li {
-    position: relative;
+    position: relative;  /* Necesario para posicionar el dropdown */
 }
 
 nav a {
-    display: block;
+    display: block;  /* Permite que el padding se aplique bien */
     padding: 1em;
     color: white;
     text-decoration: none;
@@ -45,8 +45,8 @@ a:hover {
 }
 
 nav .dropdown-content {
-    display: none;
-    position: absolute;
+    display: none; /* Oculto inicialmente */
+    position: absolute; 
     background-color: #005599;
     top: 100%;
     left: 0;
@@ -71,9 +71,9 @@ img {
     width: 100%;
     max-width: 500px;
     height: 300px;
-    object-fit: cover;
-    display: block;
-    margin: 1rem auto;
+    object-fit: cover;  /* Corta o escala la imagen para llenar el área */
+    display: block; /* Evita espacios debajo de la imagen */
+    margin: 1rem auto; /* Centrada con margen */
     border-radius: 10px;
 }
 
@@ -117,6 +117,7 @@ form textarea {
     padding: 0.7rem 0;
     margin-bottom: 0.3rem;
 }
+
 form button {
     width: 100%;
     padding: 0.7rem;
@@ -132,4 +133,87 @@ form button {
 
 form button:hover {
     background-color: #005599;
+}
+
+#menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+    nav ul {
+        display: none; /* Oculta el menú por defecto en mobile */
+        flex-direction: column;
+        background-color: #005599;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    nav ul.active {
+        display: flex; /* Muestra el menú cuando se activa */
+    }
+
+    #menu-toggle {
+        display: block; /* Muestra el botón hamburguesa */
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown:hover .dropdown-content {
+        position: static;
+        display: none;
+    }
+
+    .dropdown-content {
+        position: static;
+        background-color: transparent;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav a {
+        padding: 1em;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    main {
+        margin: 1rem;
+        padding: 0.5rem;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    form {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    form input,
+    form textarea,
+    form button {
+        font-size: 0.9rem;
+        padding: 0.6rem 0;
+        width: 100%;
+        
+    }
+
+    header, footer {
+        padding: 1em;
+        font-size: 1.1em;
+    }
 }
